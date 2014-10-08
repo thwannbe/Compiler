@@ -96,6 +96,20 @@ class CParser {
 
     CAstModule*       module(void);
 
+    CAstType*         type(void);
+
+    CAstBinaryOp*     factOp(void);
+    CAstBinaryOp*     termOp(void);
+    CAstBinaryOp*     relOp(void);
+    
+    CAstStatCall*     subroutineCall(CAstScope *s);
+    
+    CAstStatIf*       ifStatement(CAstScope *s);
+    CAstStatWhile*    whileStatement(CAstScope *s);
+    CAstStatReturn*   returnStatement(CAstScope *s);
+
+    CAstStatement*    statement(CAstScope *s);
+    
     CAstStatement*    statSequence(CAstScope *s);
 
     CAstStatAssign*   assignment(CAstScope *s);
@@ -105,7 +119,16 @@ class CParser {
     CAstExpression*   term(CAstScope *s);
     CAstExpression*   factor(CAstScope *s);
 
+    CAstExpression*   varDeclaration(CAstScope *s);
+    CAstExpression*   subroutineDecl(CAstScope *s);
+    CAstExpression*   procedureDecl(CAstScope *s);
+    CAstExpression*   functionDecl(CAstScope *s);
+    CAstExpression*   formalParam(CAstScope *s);
+    CAstProcedure*    subroutineBody(CAstScope *s);
+
     CAstConstant*     number(void);
+    CAstConstant*     ident(void);
+    CAstConstant*     boolean(void);
 
     /// @}
 
