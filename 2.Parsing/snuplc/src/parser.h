@@ -127,7 +127,7 @@ class CParser {
     CAstProcedure*    subroutineBody(CAstScope *s);
 
     CAstConstant*     number(void);
-    CAstConstant*     ident(void);
+    CAstOperand*      ident(void);
     CAstConstant*     boolean(void);
 
     /// @}
