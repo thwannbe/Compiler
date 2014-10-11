@@ -228,7 +228,7 @@ class CBoolType : public CType {
     /// @{
 
     /// @brief return @a true for scalar types, @a false otherwise
-    virtual bool IsScalar(void) const { return true; };
+    virtual bool IsBoolean(void) const { return true; };
 
     /// @brief return the storage size for this type
     /// @retval int storage size in bytes

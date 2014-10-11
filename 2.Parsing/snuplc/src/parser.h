@@ -99,6 +99,10 @@ class CParser {
     CAstStatement*    statSequence(CAstScope *s);
 
     CAstStatAssign*   assignment(CAstScope *s);
+    CAstStatCall*     subroutineCall(CAstScope *s);
+    CAstStatIf*       ifStatement(CAstScope *s);
+    CAstStatWhile*    whileStatement(CAstScope *s);
+    CAstStatReturn*   returnStatement(CAstScope *s);
 
     CAstExpression*   expression(CAstScope *s);
     CAstExpression*   simpleexpr(CAstScope *s);
@@ -106,6 +110,14 @@ class CParser {
     CAstExpression*   factor(CAstScope *s);
 
     CAstConstant*     number(void);
+    CAstConstant*     ident(void);
+    
+    void              varDeclaration(CAstScope *s);
+    void              subroutineDecl(CAstScope *s);
+    void              subroutineBody(CAstScope *s);
+    void              procedureDecl(CAstScope *s);
+    void              functionDecl(CAstScope *s);
+    void              formalParam(CAstScope *s);
 
     /// @}
 

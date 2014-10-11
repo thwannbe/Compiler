@@ -4,10 +4,9 @@
 /// @section changelog Change Log
 /// 2012/09/14 Bernhard Egger created
 /// 2013/03/07 Bernhard Egger adapted to SnuPL/0
-/// 2014/09/10 Bernhard Egger assignment 1: scans SnuPL/-1
 ///
 /// @section license_section License
-/// Copyright (c) 2012-2014, Bernhard Egger
+/// Copyright (c) 2012,2013, Bernhard Egger
 /// All rights reserved.
 ///
 /// Redistribution and use in source and binary forms,  with or without modifi-
@@ -48,16 +47,39 @@ using namespace std;
 /// each member of this enumeration represents a token in SnuPL/0
 ///
 enum EToken {
+  tIdent=0,                         ///< ident
   tNumber,                          ///< number
+  tBoolConst,                       ///< boolean constant
   tPlusMinus,                       ///< '+' or '-'
   tMulDiv,                          ///< '*' or '/'
+  tOr,                              ///< '||'
+  tAnd,                             ///< '&&'
+  tNot,                             ///< '!'
   tRelOp,                           ///< relational operator
   tAssign,                          ///< assignment operator
+  tComma,                           ///< a comma
   tSemicolon,                       ///< a semicolon
+  tColon,                           ///< a colon
   tDot,                             ///< a dot
   tLBrak,                           ///< a left bracket
   tRBrak,                           ///< a right bracket
 
+  tModule,                          ///< 'module'
+  tProcedure,                       ///< 'procedure'
+  tFunction,                        ///< 'function'
+  tVarDecl,                         ///< 'var'
+  tInteger,                         ///< 'integer'
+  tBoolean,                         ///< 'boolean'
+  tBegin,                           ///< 'begin'
+  tEnd,                             ///< 'end'
+  tIf,                              ///< 'if'
+  tThen,                            ///< 'then'
+  tElse,                            ///< 'else'
+  tWhile,                           ///< 'while'
+  tDo,                              ///< 'do'
+  tReturn,                          ///< 'return'
+
+  tComment,                         ///< comment ('// .... \n')
   tEOF,                             ///< end of file
   tIOError,                         ///< I/O error
   tUndefined,                       ///< undefined
@@ -230,7 +252,13 @@ class CScanner {
     void NextToken(void);
 
     /// @brief store the current position of the input stream internally
-    void RecordStreamPosition(void);
+    void RecordStreamPosition();
+
+    /// @brief return the previously recorded input stream position
+    ///
+    /// @param lineno line number
+    /// @param charpos character position
+    void GetRecordedStreamPosition(int *lineno, int *charpos);
 
     /// @brief create and return a new token
     ///
