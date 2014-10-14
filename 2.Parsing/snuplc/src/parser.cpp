@@ -382,7 +382,7 @@ void CParser::formalParam(CAstScope *s)
     if (tt == tRBrak) break;
 
     Consume(tIdent, &t);
-    CSymParam *param = new CSymParam(index++, t.GetValue(), CTypeManager::Get()->GetNull());
+    CSymParam *param = new CSymParam(index++, t.GetValue(), CTypeManager::Get()->GetInt());
     dynamic_cast<CAstProcedure*>(s)->GetSymbol()->AddParam(param);
     s->GetSymbolTable()->AddSymbol(param);  
 
