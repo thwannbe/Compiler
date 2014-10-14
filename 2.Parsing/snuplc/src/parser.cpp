@@ -197,14 +197,18 @@ void CParser::varDeclaration(CAstScope *s)
       if(tt == tProcedure || tt == tFunction || tt == tBegin) break;
       
       Consume(tIdent, &t);
+      if(s->GetSymbolTable()->FindSymbol(t.GetValue(), sLocal))
+        SetError(_scanner->Peek(), "Symbol [" + t.GetValue() + "] is already declared.");
       _gl_var.push_back(s->CreateVar(t.GetValue(), CTypeManager::Get()->GetNull()));
-
+      
       do {
         tt = _scanner->Peek().GetType();
         if (tt != tComma) break;
 
         Consume(tComma);
         Consume(tIdent, &t);
+        if(s->GetSymbolTable()->FindSymbol(t.GetValue(), sLocal))
+          SetError(_scanner->Peek(), "Symbol [" + t.GetValue() + "] is already declared.");
         _gl_var.push_back(s->CreateVar(t.GetValue(), CTypeManager::Get()->GetNull()));
       } while (!_abort);
 
@@ -262,6 +266,8 @@ void CParser::subroutineDecl(CAstScope *s)
   }
   assert(subroutine != NULL);
 
+  s->GetSymbolTable()->AddSymbol(subroutine->GetSymbol());
+
   subroutineBody(subroutine);
   
   if(_scanner->Peek().GetValue() != subroutine->GetName())
@@ -269,8 +275,6 @@ void CParser::subroutineDecl(CAstScope *s)
 
   Consume(tIdent);
   Consume(tSemicolon);
-
-  s->GetSymbolTable()->AddSymbol(subroutine->GetSymbol());
 }
 
 void CParser::subroutineBody(CAstScope *s)
@@ -422,12 +426,15 @@ CAstStatement* CParser::statSequence(CAstScope *s)
           id = ident(s);
           assert(id != NULL);
           tt = _scanner->Peek().GetType();
-          if (tt == tAssign)
+          if (tt == tAssign) {
+            if(id->GetSymbol()->GetSymbolType() == stProcedure)
+              SetError(_scanner->Peek(), "subroutine symbol can't be assigned.");
             st = assignment(s, id);
-          else if (tt == tLBrak)
+          } else if (tt == tLBrak) {
             st = subroutineCall(s, id);
-          else
+          } else {
             SetError(_scanner->Peek(), "assignment or subroutinecall expected.");
+          }
           break;
 
         case tIf:
@@ -653,9 +660,10 @@ CAstExpression* CParser::simpleexpr(CAstScope *s)
 
   n = term(s);
 
-  if (t.GetValue() == "-") {
+  if (t.GetType() == tPlusMinus) {
     CAstExpression *e = n;
-    n = new CAstUnaryOp(t, opNeg, e);
+    EOperation oper = (t.GetValue() == "+") ? opPos : opNeg;
+    n = new CAstUnaryOp(t, oper, e);
   }
 
   tt = _scanner->Peek().GetType();

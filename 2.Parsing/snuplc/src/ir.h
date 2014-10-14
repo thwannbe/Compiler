@@ -57,6 +57,7 @@ enum EOperation {
 
   // unary operators
   // dst = src1
+  opPos,                            ///< +  positive
   opNeg,                            ///< -  negation
   opNot,                            ///< !  binary not
 

@@ -55,6 +55,7 @@ char EOperationName[][OPERATION_STRLEN] = {
   "or",                             ///< binary or
 
   // unary operators
+  "pos",                            ///< positive
   "neg",                            ///< negation
   "not",                            ///< binary not
 
