@@ -136,7 +136,7 @@ CAstModule* CParser::module(void)
   CToken modName;
   Consume(tIdent, &modName);
   CAstModule *m = new CAstModule(mod, modName.GetValue());
-  //InitSymbolTable(m->GetSymbolTable());
+  InitSymbolTable(m->GetSymbolTable());
   
   // As module class is constructed, it initialize symbol table too.
   Consume(tSemicolon);
