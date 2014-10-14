@@ -822,6 +822,10 @@ CAstDesignator* CParser::ident(CAstScope *s)
   CToken t;
   
   Consume(tIdent, &t);
+  
+  const CSymbol* sym = s->GetSymbolTable()->FindSymbol(t.GetValue());
+  if (!sym) // symbol not exists
+    SetError(_scanner->Peek(), "Symbol [" + t.GetValue() + "] is not in symtab.");
 
-  return new CAstDesignator(t, s->GetSymbolTable()->FindSymbol(t.GetValue()));
+  return new CAstDesignator(t, sym);
 }
