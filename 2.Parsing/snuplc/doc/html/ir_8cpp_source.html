@@ -76,41 +76,42 @@
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="stringliteral">&quot;or&quot;</span>,                             </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// unary operators</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="stringliteral">&quot;neg&quot;</span>,                            </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="stringliteral">&quot;not&quot;</span>,                            </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// binary comparison operators</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="stringliteral">&quot;eq&quot;</span>,                             </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="stringliteral">&quot;neq&quot;</span>,                            </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="stringliteral">&quot;lt&quot;</span>,                             </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="stringliteral">&quot;le&quot;</span>,                             </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="stringliteral">&quot;gt&quot;</span>,                             </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="stringliteral">&quot;ge&quot;</span>,                             </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// nop</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="stringliteral">&quot;nop&quot;</span>,                            </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">// memory operations</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="stringliteral">&quot;assign&quot;</span>,                         </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="stringliteral">&quot;load&quot;</span>,                           </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="stringliteral">&quot;store&quot;</span>,                          </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="comment">// branching</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="stringliteral">&quot;goto&quot;</span>,                           </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="stringliteral">&quot;if&quot;</span>,                             </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="stringliteral">&quot;if not&quot;</span>,                         </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// function calls</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="stringliteral">&quot;call&quot;</span>,                           </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="stringliteral">&quot;return&quot;</span>,                         </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="stringliteral">&quot;param&quot;</span>,                          </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="ir_8h.html#a0eac2dfb5bafe3fe0eb2aaafcf806e1f">   88</a></span>&#160;ostream&amp; <a class="code" href="ast_8cpp.html#a806627aa5b3bd32bb5099938dc5aa552">operator&lt;&lt;</a>(ostream &amp;out, <a class="code" href="ir_8h.html#a3fd0e62c9d5ea82aa9db086075f76643">EOperation</a> t)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  out &lt;&lt; <a class="code" href="ir_8cpp.html#a9dd8443c95fab4ae867196769d102e5d">EOperationName</a>[t];</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="stringliteral">&quot;pos&quot;</span>,                            </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="stringliteral">&quot;neg&quot;</span>,                            </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="stringliteral">&quot;not&quot;</span>,                            </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// binary comparison operators</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="stringliteral">&quot;eq&quot;</span>,                             </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="stringliteral">&quot;neq&quot;</span>,                            </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="stringliteral">&quot;lt&quot;</span>,                             </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="stringliteral">&quot;le&quot;</span>,                             </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="stringliteral">&quot;gt&quot;</span>,                             </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="stringliteral">&quot;ge&quot;</span>,                             </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// nop</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="stringliteral">&quot;nop&quot;</span>,                            </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="comment">// memory operations</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="stringliteral">&quot;assign&quot;</span>,                         </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="stringliteral">&quot;load&quot;</span>,                           </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="stringliteral">&quot;store&quot;</span>,                          </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">// branching</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="stringliteral">&quot;goto&quot;</span>,                           </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="stringliteral">&quot;if&quot;</span>,                             </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="stringliteral">&quot;if not&quot;</span>,                         </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">// function calls</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="stringliteral">&quot;call&quot;</span>,                           </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="stringliteral">&quot;return&quot;</span>,                         </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="stringliteral">&quot;param&quot;</span>,                          </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="ir_8h.html#a0eac2dfb5bafe3fe0eb2aaafcf806e1f">   89</a></span>&#160;ostream&amp; <a class="code" href="ast_8cpp.html#a806627aa5b3bd32bb5099938dc5aa552">operator&lt;&lt;</a>(ostream &amp;out, <a class="code" href="ir_8h.html#a3fd0e62c9d5ea82aa9db086075f76643">EOperation</a> t)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  out &lt;&lt; <a class="code" href="ir_8cpp.html#a9dd8443c95fab4ae867196769d102e5d">EOperationName</a>[t];</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
 <div class="ttc" id="ast_8cpp_html_a806627aa5b3bd32bb5099938dc5aa552"><div class="ttname"><a href="ast_8cpp.html#a806627aa5b3bd32bb5099938dc5aa552">operator&lt;&lt;</a></div><div class="ttdeci">ostream &amp; operator&lt;&lt;(ostream &amp;out, const CAstNode &amp;t)</div><div class="ttdoc">CAstNode output operator. </div><div class="ttdef"><b>Definition:</b> <a href="ast_8cpp_source.html#l00104">ast.cpp:104</a></div></div>
 <div class="ttc" id="ast_8h_html"><div class="ttname"><a href="ast_8h.html">ast.h</a></div></div>
 <div class="ttc" id="ir_8cpp_html_a9dd8443c95fab4ae867196769d102e5d"><div class="ttname"><a href="ir_8cpp.html#a9dd8443c95fab4ae867196769d102e5d">EOperationName</a></div><div class="ttdeci">char EOperationName[][OPERATION_STRLEN]</div><div class="ttdef"><b>Definition:</b> <a href="ir_8cpp_source.html#l00048">ir.cpp:48</a></div></div>
@@ -120,7 +121,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 13 2014 14:17:24 for SnuPL Compiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 11 2014 17:40:52 for SnuPL Compiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
