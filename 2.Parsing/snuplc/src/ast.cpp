@@ -167,7 +167,29 @@ CAstStatement* CAstScope::GetStatementSequence(void) const
 
 bool CAstScope::TypeCheck(CToken *t, string *msg) const
 {
-  return true;
+  bool result = true;
+  
+  cout << "module type check" << endl;
+
+  try {
+    CAstStatement *s = _statseq;
+    cout << "main statement type check" << endl;
+    while (result && (s != NULL)) {
+      result = s->TypeCheck(t, msg);
+      s = s->GetNext();
+    }
+
+    cout << "child statement type check" << endl;
+    vector<CAstScope*>::const_iterator it = _children.begin();
+    while (result && (it != _children.end())) {
+      result = (*it)->TypeCheck(t, msg);
+      it++;
+    }
+  } catch (...) {
+    result = false;
+  }
+  
+  return result;
 }
 
 ostream& CAstScope::print(ostream &out, int indent) const
@@ -491,6 +513,31 @@ CAstExpression* CAstStatReturn::GetExpression(void) const
 
 bool CAstStatReturn::TypeCheck(CToken *t, string *msg) const
 {
+  const CType *st = GetScope()->GetType();
+  CAstExpression *e = GetExpression();
+  
+  if (st->Match(CTypeManager::Get()->GetNull())) {
+    if (e != NULL) {
+      if (t != NULL) *t = e->GetToken();
+      if (msg != NULL) *msg = "superfluous expression after return.";
+      return false;
+    }
+  } else {
+    if (e == NULL) {
+      if (t != NULL) *t = GetToken();
+      if (msg != NULL) *msg = "expression expected after return.";
+      return false;
+    }
+
+    if (!e->TypeCheck(t, msg)) return false;
+
+    if (!st->Match(e->GetType())) {
+      if (t != NULL) *t = e->GetToken();
+      if (msg != NULL) *msg = "return type mismatch.";
+      return false;
+    }
+  }
+
   return true;
 }
 
