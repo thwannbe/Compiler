@@ -109,7 +109,7 @@ class CParser {
     CAstExpression*   term(CAstScope *s);
     CAstExpression*   factor(CAstScope *s);
 
-    CAstConstant*     number(void);
+    CAstConstant*     number(bool minus=false);
     CAstConstant*     boolean(void);
     CAstDesignator*   ident(CAstScope *s);
     

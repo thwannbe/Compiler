@@ -386,6 +386,8 @@ void CParser::formalParam(CAstScope *s)
     if (tt == tRBrak) break;
 
     Consume(tIdent, &t);
+    if(s->GetSymbolTable()->FindSymbol(t.GetValue(), sLocal))
+      SetError(_scanner->Peek(), "Symbol [" + t.GetValue() + "] is already declared.");
     CSymParam *param = new CSymParam(index++, t.GetValue(), CTypeManager::Get()->GetInt());
     dynamic_cast<CAstProcedure*>(s)->GetSymbol()->AddParam(param);
     s->GetSymbolTable()->AddSymbol(param);  
@@ -652,18 +654,29 @@ CAstExpression* CParser::simpleexpr(CAstScope *s)
   // FOLLOW(simpleexpr) = { tRelOp, tComma, tRBrak, tSemicolon, tEnd, tElse }
   //
   CAstExpression *n = NULL;
+  bool skip_n = false;
   
   CToken t;
   EToken tt = _scanner->Peek().GetType();
-  if(tt == tPlusMinus)
+  if(tt == tPlusMinus) {
     Consume(tPlusMinus, &t);
+    if(_scanner->Peek().GetType() == tNumber) {
+      if(t.GetValue() == "-")
+        n = number(true);
+      else
+        n = number();
+      skip_n = true;
+    }
+  }
+  
+  if(!skip_n) {
+    n = term(s);
 
-  n = term(s);
-
-  if (t.GetType() == tPlusMinus) {
-    CAstExpression *e = n;
-    EOperation oper = (t.GetValue() == "+") ? opPos : opNeg;
-    n = new CAstUnaryOp(t, oper, e);
+    if (t.GetType() == tPlusMinus) {
+      CAstExpression *e = n;
+      EOperation oper = (t.GetValue() == "+") ? opPos : opNeg;
+      n = new CAstUnaryOp(t, oper, e);
+    }
   }
 
   tt = _scanner->Peek().GetType();
@@ -785,7 +798,7 @@ CAstExpression* CParser::factor(CAstScope *s)
   return n;
 }
 
-CAstConstant* CParser::number(void)
+CAstConstant* CParser::number(bool minus)
 {
   //
   // number = digit { digit }.
@@ -800,6 +813,7 @@ CAstConstant* CParser::number(void)
   errno = 0;
   long long v = strtoll(t.GetValue().c_str(), NULL, 10);
   if (errno != 0) SetError(t, "invalid number.");
+  if (minus) v *= -1;
 
   return new CAstConstant(t, CTypeManager::Get()->GetInt(), v);
 }
