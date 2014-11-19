@@ -258,7 +258,7 @@ CTacAddr* CAstScope::ToTac(CCodeBlock *cb)
   }
 
   cb->CleanupControlFlow();
-
+  
   return NULL;
 }
 
@@ -379,8 +379,13 @@ CAstStatement* CAstStatement::GetNext(void) const
   return _next;
 }
 
-CTacAddr* CAstStatement::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatement::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
+  // generate code for the statement
+  // this code should be overriden by its child.
+
+  cb->AddInstr(new CTacInstr(opGoto, next));
+  
   return NULL;
 }
 
@@ -459,8 +464,10 @@ void CAstStatAssign::toDot(ostream &out, int indent) const
   out << ind << dotID() << "->" << _rhs->dotID() << ";" << endl;
 }
 
-CTacAddr* CAstStatAssign::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatAssign::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
+  
+  
   return NULL;
 }
 
@@ -506,7 +513,7 @@ void CAstStatCall::toDot(ostream &out, int indent) const
   _call->toDot(out, indent);
 }
 
-CTacAddr* CAstStatCall::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatCall::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
   return NULL;
 }
@@ -604,7 +611,7 @@ void CAstStatReturn::toDot(ostream &out, int indent) const
   }
 }
 
-CTacAddr* CAstStatReturn::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatReturn::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
   return NULL;
 }
@@ -736,7 +743,7 @@ void CAstStatIf::toDot(ostream &out, int indent) const
   }
 }
 
-CTacAddr* CAstStatIf::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatIf::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
   return NULL;
 }
@@ -835,7 +842,7 @@ void CAstStatWhile::toDot(ostream &out, int indent) const
   }
 }
 
-CTacAddr* CAstStatWhile::ToTac(CCodeBlock *cb)
+CTacAddr* CAstStatWhile::ToTac(CCodeBlock *cb, CTacLabel *next)
 {
   return NULL;
 }
@@ -849,6 +856,13 @@ CAstExpression::CAstExpression(CToken t)
 {
 }
 
+CTacAddr* CAstExpression::ToTac(CCodeBlock *cb,
+                                CTacLabel *lfalse, CTacLabel *ltrue)
+{
+  // generate jumping code for boolean expression
+
+  return NULL;
+}
 
 //------------------------------------------------------------------------------
 // CAstOperation
@@ -1010,7 +1024,7 @@ void CAstBinaryOp::toDot(ostream &out, int indent) const
   out << ind << dotID() << "->" << _right->dotID() << ";" << endl;
 }
 
-CTacAddr* CAstBinaryOp::ToTac(CCodeBlock *cb)
+CTacAddr* CAstBinaryOp::ToTac(CCodeBlock *cb, CTacLabel *ltrue, CTacLabel *lfalse)
 {
   return NULL;
 }
@@ -1084,7 +1098,7 @@ void CAstUnaryOp::toDot(ostream &out, int indent) const
   out << ind << dotID() << "->" << _operand->dotID() << ";" << endl;
 }
 
-CTacAddr* CAstUnaryOp::ToTac(CCodeBlock *cb)
+CTacAddr* CAstUnaryOp::ToTac(CCodeBlock *cb, CTacLabel *ltrue, CTacLabel *lfalse)
 {
   return NULL;
 }
@@ -1187,7 +1201,7 @@ void CAstFunctionCall::toDot(ostream &out, int indent) const
   }
 }
 
-CTacAddr* CAstFunctionCall::ToTac(CCodeBlock *cb)
+CTacAddr* CAstFunctionCall::ToTac(CCodeBlock *cb, CTacLabel *ltrue, CTacLabel *lfalse)
 {
   return NULL;
 }
@@ -1273,7 +1287,7 @@ void CAstDesignator::toDot(ostream &out, int indent) const
   }
 }
 
-CTacAddr* CAstDesignator::ToTac(CCodeBlock *cb)
+CTacAddr* CAstDesignator::ToTac(CCodeBlock *cb, CTacLabel *ltrue, CTacLabel *lfalse)
 {
   return NULL;
 }
@@ -1348,7 +1362,7 @@ string CAstConstant::dotAttr(void) const
   return out.str();
 }
 
-CTacAddr* CAstConstant::ToTac(CCodeBlock *cb)
+CTacAddr* CAstConstant::ToTac(CCodeBlock *cb, CTacLabel *ltrue, CTacLabel *lfalse)
 {
   return NULL;
 }
