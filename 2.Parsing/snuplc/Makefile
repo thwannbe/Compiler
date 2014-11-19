@@ -9,8 +9,7 @@ DEPS=scanner.h \
 		 type.h \
 		 symtab.h \
 		 ast.h \
-		 ir.h \
-		 backend.h
+		 ir.h
 SCANNER=scanner.cpp
 PARSER=parser.cpp \
 			 type.cpp \
@@ -18,7 +17,6 @@ PARSER=parser.cpp \
 			 ast.cpp \
 			 ir.cpp
 IR=
-BACKEND=backend.cpp
 
 DEPS_=$(patsubst %,$(SRC_DIR)/%,$(DEPS))
 OBJ_SCANNER=$(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SCANNER))

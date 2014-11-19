@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
       out.flush();
 
       ostringstream cmd;
-      cmd << "dot -Tpdf -o" << argv[i] << ".ast.pdf " << argv[i] << ".ast.dot";
+      cmd << "dot -Tpdf -o" << argv[i] << ".pdf " << argv[i] << ".dot";
       cout << "run the following command to convert the .dot file into a PDF:" << endl
            << "  " << cmd.str() << 
            endl;
