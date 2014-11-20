@@ -97,8 +97,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5fedd72465fc5bf1927b4184db52d0e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">print the node in dot format to an output stream  <a href="#a5fedd72465fc5bf1927b4184db52d0e7">More...</a><br/></td></tr>
 <tr class="separator:a5fedd72465fc5bf1927b4184db52d0e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">transformation into TAC</div></td></tr>
-<tr class="memitem:a9a5bacd5f7fa19d0ea3f3127dda87ab0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCTacAddr.html">CTacAddr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstStatIf.html#a9a5bacd5f7fa19d0ea3f3127dda87ab0">ToTac</a> (<a class="el" href="classCCodeBlock.html">CCodeBlock</a> *cb)</td></tr>
-<tr class="separator:a9a5bacd5f7fa19d0ea3f3127dda87ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43ae6cb4534fecb6e0b3cf28ee8dd96"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCTacAddr.html">CTacAddr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstStatIf.html#ad43ae6cb4534fecb6e0b3cf28ee8dd96">ToTac</a> (<a class="el" href="classCCodeBlock.html">CCodeBlock</a> *cb, <a class="el" href="classCTacLabel.html">CTacLabel</a> *next)</td></tr>
+<tr class="separator:ad43ae6cb4534fecb6e0b3cf28ee8dd96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCAstStatement"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCAstStatement')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCAstStatement.html">CAstStatement</a></td></tr>
 <tr class="memitem:ab5ca8d71ef8f7a6cdc6835ba12d159e2 inherit pub_methods_classCAstStatement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstStatement.html#ab5ca8d71ef8f7a6cdc6835ba12d159e2">CAstStatement</a> (<a class="el" href="classCToken.html">CToken</a> token)</td></tr>
 <tr class="separator:ab5ca8d71ef8f7a6cdc6835ba12d159e2 inherit pub_methods_classCAstStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0cabcca882c1a3e48ffb953581db18ab inherit pub_methods_classCAstNode"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstNode.html#a0cabcca882c1a3e48ffb953581db18ab">dotID</a> (void) const </td></tr>
 <tr class="memdesc:a0cabcca882c1a3e48ffb953581db18ab inherit pub_methods_classCAstNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the node ID in (dot) string format  <a href="#a0cabcca882c1a3e48ffb953581db18ab">More...</a><br/></td></tr>
 <tr class="separator:a0cabcca882c1a3e48ffb953581db18ab inherit pub_methods_classCAstNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607122a517fdbaa1ab5b1d6b5de01ca9 inherit pub_methods_classCAstNode"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCTacAddr.html">CTacAddr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstNode.html#a607122a517fdbaa1ab5b1d6b5de01ca9">ToTac</a> (<a class="el" href="classCCodeBlock.html">CCodeBlock</a> *cb)</td></tr>
+<tr class="separator:a607122a517fdbaa1ab5b1d6b5de01ca9 inherit pub_methods_classCAstNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b4eee9870389922a658d35d56a451c4 inherit pub_methods_classCAstNode"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classCTacAddr.html">CTacAddr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAstNode.html#a4b4eee9870389922a658d35d56a451c4">GetTacAddr</a> (void) const </td></tr>
 <tr class="separator:a4b4eee9870389922a658d35d56a451c4 inherit pub_methods_classCAstNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -199,7 +201,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00604">604</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00623">623</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +238,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCAstNode.html#a9a30718a50f12845e03181846dab1432">CAstNode</a>.</p>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00684">684</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00703">703</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -262,7 +264,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00611">611</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00630">630</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -288,7 +290,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00621">621</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00640">640</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -314,7 +316,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00616">616</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00635">635</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +363,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classCAstNode.html#aff4622f85ee405f9b9257f91fb3a830e">CAstNode</a>.</p>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00658">658</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00677">677</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,11 +410,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classCAstNode.html#ac7b5751f26de6f86fb3b9175caa15391">CAstNode</a>.</p>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00689">689</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00708">708</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9a5bacd5f7fa19d0ea3f3127dda87ab0"></a>
+<a class="anchor" id="ad43ae6cb4534fecb6e0b3cf28ee8dd96"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -423,8 +425,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="classCTacAddr.html">CTacAddr</a> * CAstStatIf::ToTac </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classCCodeBlock.html">CCodeBlock</a> *&#160;</td>
-          <td class="paramname"><em>cb</em></td><td>)</td>
+          <td class="paramname"><em>cb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classCTacLabel.html">CTacLabel</a> *&#160;</td>
+          <td class="paramname"><em>next</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -434,9 +446,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classCAstStatement.html#af4d86d3e74e7b6afa9f98a87c5f70d33">CAstStatement</a>.</p>
+<p>Reimplemented from <a class="el" href="classCAstStatement.html#afea5b8856b81de13f09f385a932c4d5d">CAstStatement</a>.</p>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00727">727</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00746">746</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -490,7 +502,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classCAstStatement.html#af4e22fa71fa3b1fe73bb361a0fc4ec8b">CAstStatement</a>.</p>
 
-<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00626">626</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
+<p>Definition at line <a class="el" href="ast_8cpp_source.html#l00645">645</a> of file <a class="el" href="ast_8cpp_source.html">ast.cpp</a>.</p>
 
 </div>
 </div>
@@ -574,7 +586,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 12 2014 21:54:08 for SnuPL Compiler by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 20 2014 13:22:35 for SnuPL Compiler by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
