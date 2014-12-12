@@ -338,9 +338,15 @@ void CBackendx86::EmitInstruction(CTacInstr *i, CSymtab *symtab)
     // memory operations
     case opAssign:
       // Pos unary op just do copy like Assgin op
-      EmitInstruction("movl", Operand(src1) + string(", %eax"),
-                      cmt.str());
-      EmitInstruction("movl", string("%eax, ") + Operand(dst));
+      if(dynamic_cast<CTacName*>(dst)->GetSymbol()->GetDataType() == 
+        CTypeManager::Get()->GetBool()) {
+        EmitInstruction("movb", Operand(src1) + string(", %al"), cmt.str());
+        EmitInstruction("movb", string("%al, ") + Operand(dst));
+      }
+      else {// int
+        EmitInstruction("movl", Operand(src1) + string(", %eax"), cmt.str());
+        EmitInstruction("movl", string("%eax, ") + Operand(dst));
+      }
       break;
 
     // unconditional branching
